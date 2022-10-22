@@ -19,7 +19,7 @@
         app:srcCompat="@mipmap/logo_2" />
 
     <EditText
-        android:id="@+id/usernameEdt"
+        android:id="@+id/noHandphoneEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -27,7 +27,7 @@
         android:layout_marginEnd="35dp"
         android:background="@drawable/input"
         android:fontFamily="@font/montserrat"
-        android:hint="Tulisakan Username"
+        android:hint="Tulisakan No. Handphone"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:singleLine="true"
@@ -35,6 +35,24 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/namaEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/input"
+        android:fontFamily="@font/montserrat"
+        android:hint="Tulisakan Username Anda"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="13dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noHandphoneEdt" />
 
     <EditText
         android:id="@+id/passwordEdt"
@@ -45,17 +63,17 @@
         android:layout_marginEnd="35dp"
         android:background="@drawable/input"
         android:fontFamily="@font/montserrat"
-        android:hint="Tulisakan Password"
+        android:hint="Tulisakan Password Anda"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameEdt" />
+        app:layout_constraintTop_toBottomOf="@+id/namaEdt" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/masukBtn"
+        android:id="@+id/daftarkanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -63,30 +81,12 @@
         android:fontFamily="@font/montserrat_bold"
         android:paddingHorizontal="31dp"
         android:paddingVertical="13dp"
-        android:text="Masuk"
+        android:text="Daftarkan Aku!"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEdt" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/daftarBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/button"
-        android:backgroundTint="@color/dark_green"
-        android:fontFamily="@font/montserrat_bold"
-        android:paddingHorizontal="31dp"
-        android:paddingVertical="13dp"
-        android:text="Daftar"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.872"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEdt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
