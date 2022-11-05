@@ -26,8 +26,33 @@ public class StartActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        Log.v("Start","Ini adalah onStart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.v("Start","Ini adalah onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.v("Start","Ini adalah onPause()");
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
-        Log.v("Main","Ini adalah onStop()");
+        Log.v("Start","Ini adalah onStop()");
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.v("Start","Ini adalah onDestroy()");
+    }
+
 }
