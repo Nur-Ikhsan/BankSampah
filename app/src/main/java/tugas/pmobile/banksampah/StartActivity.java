@@ -14,7 +14,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v("Main","Ini adalah onCreate()");
+        Log.v("Start","Ini adalah onCreate()");
 
         setContentView(R.layout.activity_start);
 
@@ -38,6 +38,12 @@ public class StartActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.v("Start","Ini adalah onRestart()");
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         Log.v("Start","Ini adalah onPause()");
@@ -54,5 +60,4 @@ public class StartActivity extends AppCompatActivity {
         super.onDestroy();
         Log.v("Start","Ini adalah onDestroy()");
     }
-
 }

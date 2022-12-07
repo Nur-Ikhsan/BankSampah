@@ -8,16 +8,22 @@ import android.util.Log;
 import android.widget.Button;
 
 public class LoginActivity extends AppCompatActivity {
-    Button btn;
+    Button daftarBtn, masukBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.v("Login","Ini adalah onCreate()");
         setContentView(R.layout.activity_login);
 
-        btn = findViewById(R.id.daftarBtn);
-        btn.setOnClickListener(view -> {
+        daftarBtn = findViewById(R.id.daftarBtn);
+        daftarBtn.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
+
+        masukBtn = findViewById(R.id.masukBtn);
+        masukBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         });
     }
