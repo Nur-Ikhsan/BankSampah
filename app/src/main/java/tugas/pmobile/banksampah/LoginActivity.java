@@ -9,16 +9,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
-import tugas.pmobile.banksampah.Model.Login;
+import tugas.pmobile.banksampah.Model.LoginRequest;
 import tugas.pmobile.banksampah.Model.Response;
 import tugas.pmobile.banksampah.retrofit.ApiService;
 
 
 public class LoginActivity extends AppCompatActivity {
     Button daftarBtn, masukBtn;
-    EditText usernameEdt, passwordEdt;
+    EditText emailEdt, passwordEdt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,27 +72,33 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login() {
         final Boolean[] check = {false};
-        Login login = new Login();
-        usernameEdt = findViewById(R.id.usernameEdt);
+        LoginRequest loginRequest = new LoginRequest();
+        emailEdt = findViewById(R.id.emailEdt);
         passwordEdt = findViewById(R.id.passwordEdt);
 
-        login.setEmail(usernameEdt.getText().toString());
-        login.setPassword(passwordEdt.getText().toString());
+        loginRequest.setEmail(emailEdt.getText().toString());
+        loginRequest.setPassword(passwordEdt.getText().toString());
 
-        ApiService.endpoint().login(login).enqueue(new Callback<Response<Boolean>>() {
+        ApiService.endpoint().login(loginRequest).enqueue(new Callback<Response<Boolean>>() {
             @Override
             public void onResponse(Call<Response<Boolean>> call, retrofit2.Response<Response<Boolean>> response) {
                 if (response.isSuccessful()) {
                     check[0] = response.body().getData();
                     Log.d("Login", "Login = "+ check[0].toString());
-                    if (check[0]) {
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        Toast toast = Toast.makeText(getApplicationContext(), "Berhasil Login", Toast.LENGTH_SHORT);
+                    Toast toast;
+                    if (Objects.equals(loginRequest.getEmail(), "") || Objects.equals(loginRequest.getPassword(), "")){
+                        toast = Toast.makeText(getApplicationContext(), "Field Tidak Boleh Kosong", Toast.LENGTH_SHORT);
                         toast.show();
                     } else {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Username atau Password Anda Salah", Toast.LENGTH_SHORT);
-                        toast.show();
+                        if (check[0]) {
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            toast = Toast.makeText(getApplicationContext(), "Berhasil Login", Toast.LENGTH_SHORT);
+                            toast.show();
+                        } else {
+                            toast = Toast.makeText(getApplicationContext(), "Email atau Password Anda Salah", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
                     }
                 }
             }
