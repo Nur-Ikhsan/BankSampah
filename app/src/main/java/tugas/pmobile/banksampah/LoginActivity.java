@@ -82,24 +82,20 @@ public class LoginActivity extends AppCompatActivity {
         ApiService.endpoint().login(loginRequest).enqueue(new Callback<Response<Boolean>>() {
             @Override
             public void onResponse(Call<Response<Boolean>> call, retrofit2.Response<Response<Boolean>> response) {
-                if (response.isSuccessful()) {
-                    check[0] = response.body().getData();
-                    Log.d("Login", "Login = "+ check[0].toString());
-                    Toast toast;
-                    if (Objects.equals(loginRequest.getEmail(), "") || Objects.equals(loginRequest.getPassword(), "")){
-                        toast = Toast.makeText(getApplicationContext(), "Field Tidak Boleh Kosong", Toast.LENGTH_SHORT);
-                        toast.show();
-                    } else {
-                        if (check[0]) {
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            toast = Toast.makeText(getApplicationContext(), "Berhasil Login", Toast.LENGTH_SHORT);
-                            toast.show();
-                        } else {
-                            toast = Toast.makeText(getApplicationContext(), "Email atau Password Anda Salah", Toast.LENGTH_SHORT);
-                            toast.show();
-                        }
-                    }
+                check[0] = response.body().getData();
+                Log.d("Login", "Login = "+ check[0].toString());
+                Toast toast;
+                if (Objects.equals(loginRequest.getEmail(), "") || Objects.equals(loginRequest.getPassword(), "")){
+                    toast = Toast.makeText(getApplicationContext(), "Field Tidak Boleh Kosong", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else if (check[0]) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    toast = Toast.makeText(getApplicationContext(), "Berhasil Login", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    toast = Toast.makeText(getApplicationContext(), "Email atau Password Anda Salah", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
 
