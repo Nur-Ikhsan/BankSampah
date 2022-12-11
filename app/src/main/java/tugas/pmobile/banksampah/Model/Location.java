@@ -7,6 +7,24 @@ public class Location {
     private String open_time;
     private String close_time;
     private String contacts;
+    private Float latitude;
+    private Float longitude;
+
+    public Float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
+    }
+
+    public Float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
+    }
 
     public Integer getId() {
         return id;

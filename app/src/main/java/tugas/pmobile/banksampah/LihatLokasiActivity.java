@@ -11,6 +11,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import tugas.pmobile.banksampah.Model.Location;
@@ -36,7 +38,11 @@ public class LihatLokasiActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Response<List<Location>>> call, retrofit2.Response<Response<List<Location>>> response) {
                 List<Location> locations = response.body().getData();
-                Log.v("LihatLokasiActivity", locations.get(0).getName());
+                LihatLokasiAdapter lihatLokasiAdapter = new LihatLokasiAdapter(locations, LihatLokasiActivity.this);
+                Log.v("LihatLokasiActivity", "Lokasi Ditampilkan");
+                RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                recyclerView.setAdapter(lihatLokasiAdapter);
+
             }
 
             @Override

@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-                android:text="Lokasi :" />
+                android:text="Lokasi : " />
 
             <TextView
                 android:id="@+id/addressTV2"
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-                android:text="Jam Operasi :" />
+                android:text="Jam Operasi : " />
 
             <TextView
                 android:id="@+id/opeatationTimeTV2"
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-                android:text="Kontak :" />
+                android:text="Kontak : " />
 
             <TextView
                 android:id="@+id/contactTV2"
