@@ -19,15 +19,15 @@
         app:srcCompat="@mipmap/logo_2" />
 
     <EditText
-        android:id="@+id/noHandphoneEdt"
+        android:id="@+id/nameEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="35dp"
         android:background="@drawable/input"
         android:fontFamily="@font/montserrat"
-        android:hint="Tulisakan No. Handphone"
+        android:hint="Tulisakan Nama Anda"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:singleLine="true"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/namaEdt"
+        android:id="@+id/emailEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -45,14 +45,15 @@
         android:layout_marginEnd="35dp"
         android:background="@drawable/input"
         android:fontFamily="@font/montserrat"
-        android:hint="Tulisakan Username Anda"
+        android:hint="Tulisakan Email Anda"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:singleLine="true"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noHandphoneEdt" />
+        app:layout_constraintTop_toBottomOf="@+id/nameEdt" />
 
     <EditText
         android:id="@+id/passwordEdt"
@@ -67,10 +68,30 @@
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:singleLine="true"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/namaEdt" />
+        app:layout_constraintTop_toBottomOf="@+id/emailEdt" />
+
+    <EditText
+        android:id="@+id/rePasswordEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/input"
+        android:fontFamily="@font/montserrat"
+        android:hint="Tulisakan Ulang Password Anda"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="13dp"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEdt" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/daftarkanBtn"
@@ -86,7 +107,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEdt" />
+        app:layout_constraintTop_toBottomOf="@+id/rePasswordEdt" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
