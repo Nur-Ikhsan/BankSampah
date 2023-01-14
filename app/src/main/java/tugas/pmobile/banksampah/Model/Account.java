@@ -1,6 +1,6 @@
 package tugas.pmobile.banksampah.Model;
 
-public class Account {
+public class Account implements java.io.Serializable {
     private Integer id;
     private String name;
     private String email;
