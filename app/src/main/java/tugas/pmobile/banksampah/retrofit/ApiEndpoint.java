@@ -1,5 +1,7 @@
 package tugas.pmobile.banksampah.retrofit;
 
+import com.google.gson.JsonElement;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -7,7 +9,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import tugas.pmobile.banksampah.Model.Account;
 import tugas.pmobile.banksampah.Model.Location;
 import tugas.pmobile.banksampah.Model.LoginRequest;
 import tugas.pmobile.banksampah.Model.Response;
@@ -18,7 +19,7 @@ import tugas.pmobile.banksampah.Model.Trash;
 
 public interface ApiEndpoint {
     @POST("api/login")
-    Call<Response<Account>> login(@Body LoginRequest loginRequest);
+    Call<Response<JsonElement>> login(@Body LoginRequest loginRequest);
 
     @POST("api/signup")
     Call<Response<String>> signUp(@Body SignUpRequest signUpRequest);

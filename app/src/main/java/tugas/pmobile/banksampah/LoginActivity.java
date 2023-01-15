@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -79,31 +82,33 @@ public class LoginActivity extends AppCompatActivity {
         loginRequest.setEmail(emailEdt.getText().toString());
         loginRequest.setPassword(passwordEdt.getText().toString());
 
-        ApiService.endpoint().login(loginRequest).enqueue(new Callback<Response<Account>>() {
-            @Override
-            public void onResponse(Call<Response<Account>> call, retrofit2.Response<Response<Account>> response) {
-                Account account = response.body().getData();
-                Log.d("Login", "Login = "+ account.toString());
-                Toast toast;
-                if (Objects.equals(loginRequest.getEmail(), "") || Objects.equals(loginRequest.getPassword(), "")){
-                    toast = Toast.makeText(getApplicationContext(), "Field Tidak Boleh Kosong", Toast.LENGTH_SHORT);
-                    toast.show();
-                } else if (response.isSuccessful()) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("account", account);
-                    startActivity(intent);
-                    toast = Toast.makeText(getApplicationContext(), "Berhasil Login", Toast.LENGTH_SHORT);
-                    toast.show();
-                } else {
-                    toast = Toast.makeText(getApplicationContext(), "Email atau Password Anda Salah", Toast.LENGTH_SHORT);
-                    toast.show();
+        if (Objects.equals(loginRequest.getEmail(), "") || Objects.equals(loginRequest.getPassword(), "")){
+            Toast.makeText(getApplicationContext(), "Field Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+        } else {
+            ApiService.endpoint().login(loginRequest).enqueue(new Callback<Response<JsonElement>>() {
+                @Override
+                public void onResponse(Call<Response<JsonElement>> call, retrofit2.Response<Response<JsonElement>> response) {
+                    Toast toast;
+                    JsonElement jsonElement = response.body().getData();
+                    if (jsonElement.isJsonObject()) {
+                        Account account = new Gson().fromJson(jsonElement, Account.class);
+                        Log.d("Login", "Login = "+ account.toString());
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("account", account);
+                        startActivity(intent);
+                        toast = Toast.makeText(getApplicationContext(), "Berhasil Login", Toast.LENGTH_SHORT);
+                        toast.show();
+                    } else if (jsonElement.isJsonPrimitive()) {
+                        toast = Toast.makeText(getApplicationContext(), "Email atau Password Anda Salah", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                 }
-            }
+                @Override
+                public void onFailure(Call<Response<JsonElement>> call, Throwable t) {
+                    Log.d("Login", t.toString());
+                }
+            });
 
-            @Override
-            public void onFailure(Call<Response<Account>> call, Throwable t) {
-                Log.d("Login", t.toString());
-            }
-        });
+        }
     }
 }
