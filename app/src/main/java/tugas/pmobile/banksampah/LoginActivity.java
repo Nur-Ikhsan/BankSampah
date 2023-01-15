@@ -39,9 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         masukBtn = findViewById(R.id.masukBtn);
-        masukBtn.setOnClickListener(view -> {
-            login();
-        });
+        masukBtn.setOnClickListener(view -> login());
     }
 
     @Override

@@ -71,6 +71,7 @@ public class TabungSampahActivity extends AppCompatActivity {
             public void onFailure(Call<Response<List<Trash>>> call, Throwable t) {
                 Log.d("TabungSampahActivity", t.toString());
             }
+
         });
 
         ApiService.endpoint().getLocations().enqueue(new Callback<Response<List<Location>>>() {
@@ -104,17 +105,23 @@ public class TabungSampahActivity extends AppCompatActivity {
                 public void onResponse(Call<Response<StoringTrash>> call, retrofit2.Response<Response<StoringTrash>> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(TabungSampahActivity.this, "Data berhasil dikirim", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(TabungSampahActivity.this, AfterTabungSampahActivity.class);
+                        intent.putExtra("namaSampah",trashList.get(spinner1.getSelectedItemPosition()).getName());
+                        intent.putExtra("banyakSampah", weight);
+                        intent.putExtra("lokasi", locationsList.get(spinner2.getSelectedItemPosition()).getName());
+                        startActivity(intent);
                     } else {
                         Toast.makeText(TabungSampahActivity.this, "Terjadi kesalahan saat mengirim data", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Response<StoringTrash>> call, Throwable t) {
                     Toast.makeText(TabungSampahActivity.this, "Terjadi kesalahan saat mengirim data", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             });
-            finish();
         });
 
 
