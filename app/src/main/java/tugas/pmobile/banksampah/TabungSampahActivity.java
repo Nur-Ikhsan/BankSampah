@@ -107,7 +107,7 @@ public class TabungSampahActivity extends AppCompatActivity {
                         Toast.makeText(TabungSampahActivity.this, "Data berhasil dikirim", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(TabungSampahActivity.this, AfterTabungSampahActivity.class);
                         intent.putExtra("namaSampah",trashList.get(spinner1.getSelectedItemPosition()).getName());
-                        intent.putExtra("banyakSampah", weight);
+                        intent.putExtra("banyakSampah", inputAngka.getText().toString());
                         intent.putExtra("lokasi", locationsList.get(spinner2.getSelectedItemPosition()).getName());
                         startActivity(intent);
                     } else {
