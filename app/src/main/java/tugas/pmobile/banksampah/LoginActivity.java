@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<Response<JsonElement>> call, Throwable t) {
                     Log.d("Login", t.toString());
+                    Toast.makeText(getApplicationContext(), "Gagal terhubung ke server", Toast.LENGTH_SHORT).show();
                 }
             });
 

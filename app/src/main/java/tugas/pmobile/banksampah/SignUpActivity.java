@@ -1,7 +1,5 @@
 package tugas.pmobile.banksampah;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import retrofit2.Call;
 import retrofit2.Callback;
-import tugas.pmobile.banksampah.Model.Account;
 import tugas.pmobile.banksampah.Model.Response;
 import tugas.pmobile.banksampah.Model.SignUpRequest;
 import tugas.pmobile.banksampah.retrofit.ApiService;
@@ -64,6 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<Response<String>> call, Throwable t) {
                         Log.d("SignUp", t.toString());
+                        Toast.makeText(getApplicationContext(), "Gagal terhubung ke server", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
