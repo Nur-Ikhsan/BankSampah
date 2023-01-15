@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:contentDescription="Riwayat"
-                    android:src="@mipmap/gmaps_logo" />
+                    android:src="@mipmap/riwayat" />
             </RelativeLayout>
 
             <TextView
